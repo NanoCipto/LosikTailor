@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pelanggan</title>
+</head>
+<style>
+    a{
+        text-decoration: none;
+    }
+</style>
+<body>
+    <h1>Pelanggan</h1>
+    <table>
+        <tbody>
+            <tr>
+                <th>Nama</th>
+                <th>noHP</th>
+                <th>Action</th>
+            </tr>
+            {% for item in pelangganall %}
+            <tr>
+                <td>{{ item.Nama }}</td>
+                <td>{{ item.noHP }}</td>
+                <td>
+                    <a href="{% url 'updatedatapelanggan' item.IDpelanggan %}">
+                        <button>Update</button>
+                    </a>
+                    <a href="{% url 'deletedatapelanggan' item.IDpelanggan %}">
+                        <button>Delete</button>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <h3>Read Specific Data</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Nama</th>
+                <th>NoHP</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ specificpelanggan.Nama }}</td>
+                <td>{{ specificpelanggan.noHP }}</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    
+    <a href="{% url 'createdatapelanggan' %}">
+        <button>
+            Create Data
+        </button>
+    </a>
+</body>
+</html>

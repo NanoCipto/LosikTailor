@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Data Baju</title>
+</head>
+<body>
+    <h1>Create Data Baju</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <th>Jenis Baju</th>
+                <td>
+                    <select name="jenisbaju">
+                        <option value="Kemeja Lengan Panjang">Kemeja Lengan Panjang</option>
+                        <option value="Kemeja Lengan Pendek">Kemeja Lengan Pendek</option>
+                        <option value="Celana Panjang">Celana Panjang</option>
+                        <option value="Celana Pendek">Celana Pendek</option>
+                        <option value="Rok Panjang">Rok Panjang</option>
+                        <option value="Rok Pendek">Rok Pendek</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>Harga Baju</th>
+                <td>
+                    <input type="number" name="hargabaju">
+                </td>
+            </tr>
+        </table>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

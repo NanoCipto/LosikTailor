@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Baju</title>
+</head>
+<style>
+    a{
+        text-decoration: none;
+    }
+</style>
+<body>
+    <h1>Baju</h1>
+    <table>
+        <tbody>
+            <tr>
+                <th>Jenis Baju</th>
+                <th>Harga Baju</th>
+                <th>Action</th>
+            </tr>
+            {% for item in bajuall %}
+            <tr>
+                <td>{{ item.jenisbaju }}</td>
+                <td>{{ item.hargabaju }}</td>
+                <td>
+                    <a href="{% url 'updatedatabaju' item.IDbaju %}">
+                        <button>Update</button>
+                    </a>
+                    <a href="{% url 'deletedatabaju' item.IDbaju %}">
+                        <button>Delete</button>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <h3>Read Filtered Data</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Jenis Baju</th>
+                <th>Harga Baju</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in bajufilter %}
+            <tr>
+                <td>{{item.jenisbaju}}</td>
+                <td>{{Item.hargabaju}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <h3>Read Specific Data</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Jenis Baju</th>
+                <th>Harga Baju</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ specificbaju.jenisbaju }}</td>
+                <td>{{ specificbaju.hargabaju }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <a href="{% url 'createdatabaju' %}">
+        <button>
+            Create Data
+        </button>
+    </a>
+</body>
+</html>
