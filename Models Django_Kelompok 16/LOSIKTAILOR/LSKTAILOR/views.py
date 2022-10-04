@@ -1,9 +1,9 @@
+from pyexpat import model
 from django.shortcuts import render,redirect
 from . import models
 
 # Create your views here.
 
-# Ambil data pelanggan
 
 def pelanggan(request):
     pelangganall = models.pelanggan.objects.all()
@@ -143,10 +143,12 @@ def createdatapemesanan (request):
         pelangganget = models.pelanggan.objects.get(IDpelanggan = IDpelanggan)
         pelangganobj = pelangganget
         tanggalpemesanan = request.POST['tanggalpemesanan']
+        tanggalselesai = request.POST['tanggalselesai']
 
         newpemesanan = models.pemesanan(
             IDpelanggan = pelangganobj,
-            tanggalpemesanan = tanggalpemesanan
+            tanggalpemesanan = tanggalpemesanan,
+            tanggalselesai = tanggalselesai
         ).save()
         return redirect('pemesanan')
 
@@ -159,6 +161,7 @@ def updatedatapemesanan(request,id):
     else :
         pemesananobj.IDpelanggan = request.POST['IDpelanggan']
         pemesananobj.tanggalpemesanan = request.POST['tanggalpemesanan']
+        pemesananobj.tanggalselesai = request.POST['tanggalselesai']
         pemesananobj.save()
         return redirect('pemesanan')
 
@@ -168,32 +171,49 @@ def deletedatapemesanan(request,id):
     return redirect('pemesanan')
 
 def detailpesanan(request):
-    detailpesananall = models.detailpesanan.objects.all()
-
+    data =[]
+    detailpesananall = models.detailpesanan.objects.all()    
+    for item in detailpesananall:
+        dummy =[]
+        detailpesanan = item.IDdetailpesanan
+        pemesanan = models.pemesanan.objects.filter(detailpesanan = detailpesanan)
+        dummy.append(item)
+        dummy.append(pemesanan)
+        data.append(dummy)
+    
     return render(request, 'detailpesanan.html',{
         "detailpesananall" : detailpesananall,
     })
 
 def createdatadetailpesanan (request):
+    pemesananall = models.pemesanan.objects.all()
+    bajuall = models.baju.objects.all()
     if request.method == "GET":
-        return render(request, 'createdatadetailpesanan.html')
+        return render(request, 'createdatadetailpesanan.html', {
+            'pemesananall' : pemesananall,
+            'bajuall' : bajuall
+        })
     else :
         IDpemesanan = request.POST['IDpemesanan']
+        pemesananget = models.pemesanan.objects.get(IDpemesanan = IDpemesanan)
+        pemesananobj = pemesananget
         IDbaju = request.POST['IDbaju']
+        bajuget = models.baju.objects.get(IDbaju = IDbaju)
+        bajuobj = bajuget
         Jeniskain = request.POST['Jeniskain']
         Ukuranbaju = request.POST['Ukuranbaju']
         Jumlahitempesanan = request.POST['Jumlahitempesanan']
 
         newdetailpesanan = models.detailpesanan(
-            IDpemesanan = IDpemesanan,
-            IDbaju = IDbaju,
+            IDpemesanan = pemesananobj,
+            IDbaju = bajuobj,
             Jeniskain = Jeniskain,
             Ukuranbaju = Ukuranbaju,
             Jumlahitempesanan = Jumlahitempesanan
         ).save()
         return redirect('detailpesanan')
 
-def updatedetailpesanan(request,id):
+def updatedatadetailpesanan(request,id):
     detailpesananobj = models.detailpesanan.objects.get(IDdetailpesanan = id)
     if request.method == "GET":
         return render(request, "updatedatadetailpesanan.html",{
@@ -214,38 +234,52 @@ def deletedatadetailpesanan(request,id):
     return redirect('detailpesanan')
 
 def detailtambahan(request):
-    detailtambahanall = models.detailtambahan.objects.all()
-
+    data =[]
+    detailtambahanall = models.detailtambahan.objects.all()    
+    for item in detailtambahanall:
+        dummy =[]
+        detailtambahan = item.IDdetailtambahan
+        tambahan = models.tambahan.objects.filter(detailtambahan = detailtambahan)
+        dummy.append(item)
+        dummy.append(tambahan)
+        data.append(dummy)
     return render(request, 'detailtambahan.html',{
         "detailtambahanall" : detailtambahanall,
     })
 
 def createdatadetailtambahan (request):
+    pemesananall = models.pemesanan.objects.all()
+    tambahanall = models.tambahan.objects.all()
     if request.method == "GET":
-        return render(request, 'createdatadetailtambahan.html')
+        return render(request, 'createdatadetailtambahan.html', {
+            'pemesananall' : pemesananall,
+            'tambahanall' : tambahanall
+        })
     else :
-        IDdetailtambahan = request.POST['IDdetailtambahan']
         IDpemesanan = request.POST['IDpemesanan']
+        pemesananget = models.pemesanan.objects.get(IDpemesanan = IDpemesanan)
+        pemesananobj = pemesananget
         IDtambahan = request.POST['IDtambahan']
+        tambahanget = models.tambahan.objects.get(IDtambahan = IDtambahan)
+        tambahanobj = tambahanget
         Jumlahitemtambahan = request.POST['Jumlahitemtambahan']
 
         newdetailtambahan = models.detailtambahan(
-            IDdetailtambahan = IDdetailtambahan,
-            IDpemesanan = IDpemesanan,
-            IDtambahan = IDtambahan,
+            IDpemesanan = pemesananobj,
+            IDtambahan = tambahanobj,
             Jumlahitemtambahan = Jumlahitemtambahan,
         ).save()
         return redirect('detailtambahan')
 
-def updatedetailtambahan(request,id):
+def updatedatadetailtambahan(request,id):
     detailtambahanobj = models.detailtambahan.objects.get(IDdetailtambahan = id)
     if request.method == "GET":
         return render(request, "updatedatadetailtambahan.html",{
             'detailtambahan' : detailtambahanobj
         })
     else :
-        detailtambahanobj.IDdetailtambahan = request.POST['IDdetailtambahan']
         detailtambahanobj.IDpemesanan = request.POST['IDpemesanan']
+        detailtambahanobj.IDtambahan = request.POST['IDtambahan']
         detailtambahanobj.Jumlahitemtambahan = request.POST['Jumlahitemtambahan']
         detailtambahanobj.save()
         return redirect('detailtambahan')
@@ -254,4 +288,3 @@ def deletedatadetailtambahan(request,id):
     detailtambahanobj = models.detailtambahan.objects.get(IDdetailtambahan = id)
     detailtambahanobj.delete()
     return redirect('detailtambahan')
-

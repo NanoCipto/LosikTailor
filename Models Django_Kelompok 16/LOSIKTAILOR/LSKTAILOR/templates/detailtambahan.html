@@ -4,31 +4,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detail Pesanan</title>
+    <title>Detail Tambahan</title>
 </head>
 <body>
-    <h1>Data Detail Pesanan</h1>
+    <h1>Data Detail Tambahan</h1>
     <table>
         <tbody>
             <tr>
                 <th>ID Pemesanan</th>
-                <th>ID Baju</th>
-                <th>Jenis Kain</th>
-                <th>Ukuran Baju</th>
+                <th>ID Tambahan</th>
                 <th>Jumlah Item Pesanan</th>
             </tr>
-            {% for item in detailpesananall %}
+            {% for item in detailtambahanall %}
             <tr>
                 <td>{{ item.IDpemesanan }}</td>
-                <td>{{ item.IDbaju }}</td>
-                <td>{{ item.Jeniskain }}</td>
-                <td>{{ item.Ukuranbaju }}</td>
-                <td>{{ item.Jumlahitempesanan }}</td>
+                <td>{{ item.IDtambahan }}</td>
+                <td>{{ item.Jumlahitemtambahan }}</td>
                 <td>
-                    <a href="{% url 'updatedatadetailpesanan' item.IDdetailpesanan %}">
+                    <a href="{% url 'updatedatadetailtambahan' item.IDdetailtambahan %}">
                         <button>Update</button>
                     </a>
-                    <a href="{% url 'deletedatadetailpesanan' item.IDdetailpesanan %}">
+                    <a href="{% url 'deletedatadetailtambahan' item.IDdetailtambahan %}">
                         <button>Delete</button>
                     </a>
                 </td>
@@ -38,14 +34,10 @@
     </table>
 
 
-    <a href="{% url 'createdatadetailpesanan' %}">
+    <a href="{% url 'createdatadetailtambahan' %}">
         <button>
             Create Data
         </button>
     </a>
-</body>
-</html>
-        </tbody>
-    </table>
 </body>
 </html>

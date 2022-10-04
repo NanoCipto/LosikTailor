@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Data Detail Pesanan</title>
+</head>
+<body>
+    <h1>Update Data Detail Pesanan</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <th>ID Pemesanan</th>
+                <td>
+                    <select name="IDpemesanan" id="" class="form-control">
+                        <option value=""></option>
+                        {% for item in pemesananall %}
+                        <option value="{{ item.IDpemesanan }}">{{ item.IDpemesanan }}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>ID Baju</th>
+                <td>
+                    <select name="IDbaju" id="" class="form-control">
+                        <option value=""></option>
+                        {% for item in bajuall %}
+                        <option value="{{ item.IDbaju }}">{{ item.IDbaju }}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>Jenis Kain</th>
+                <td>
+                    <input type="text" name="jeniskain">
+                </td>
+            </tr>
+            <tr>
+                <th>Ukuran Baju</th>
+                <td>
+                    <input type="text" name="ukuranbaju">
+                </td>
+            </tr>
+            <tr>
+                <th>Jumlah Item Pesanan</th>
+                <td>
+                    <input type="text" name="jumlahitempesanan">
+                </td>
+            </tr>
+        </table>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

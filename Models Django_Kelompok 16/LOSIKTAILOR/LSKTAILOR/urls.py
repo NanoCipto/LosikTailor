@@ -18,4 +18,12 @@ urlpatterns = [
     path('createdatapemesanan',views.createdatapemesanan, name='createdatapemesanan'),
     path('updatepemesanan/<str:id>',views.updatedatapemesanan, name='updatedatapemesanan'),
     path('deletepemesanan/<str:id>',views.deletedatapemesanan, name='deletedatapemesanan'),
+    path('detailpesanan',views.detailpesanan, name='detailpesanan'),
+    path('createdatadetailpesanan',views.createdatadetailpesanan, name='createdatadetailpesanan'),
+    path('updatedatadetailpesanan/<str:id>',views.updatedatadetailpesanan, name='updatedatadetailpesanan'),
+    path('deletedatadetailpesanan/<str:id>',views.deletedatadetailpesanan, name='deletedatadetailpesanan'),
+    path('detailtambahan',views.detailtambahan, name='detailtambahan'),
+    path('createdatadetailtambahan',views.createdatadetailtambahan, name='createdatadetailtambahan'),
+    path('updatedatadetailtambahan/<str:id>',views.updatedatadetailtambahan, name='updatedatadetailtambahan'),
+    path('deletedatadetailtambahan/<str:id>',views.deletedatadetailtambahan, name='deletedatadetailtambahan'),
 ]

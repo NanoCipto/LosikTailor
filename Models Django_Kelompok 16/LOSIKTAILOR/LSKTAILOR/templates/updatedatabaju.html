@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Data Baju</title>
+    <title>Update Data Baju</title>
 </head>
 <body>
-    <h1>Create Data Baju</h1>
+    <h1>Update Data Baju</h1>
     <form action="" method="post">
         {% csrf_token %}
         <table>
@@ -27,7 +27,11 @@
             <tr>
                 <th>Harga Baju</th>
                 <td>
-                    <input type="number" name="hargabaju">
+                    <select name="hargabaju">
+                        <option value="50000">50000</option>
+                        <option value="40000">40000</option>
+                        <option value="60000">60000</option>
+                    </select>
                 </td>
             </tr>
         </table>
