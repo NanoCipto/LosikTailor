@@ -30,6 +30,7 @@ class pemesanan (models.Model):
     IDpemesanan = models.AutoField(primary_key=True)
     IDpelanggan = models.ForeignKey(pelanggan,on_delete=models.CASCADE)
     tanggalpemesanan = models.DateField()
+    tanggalselesai = models.DateField()
 
     def __str__(self):
         return str(self.IDpemesanan)

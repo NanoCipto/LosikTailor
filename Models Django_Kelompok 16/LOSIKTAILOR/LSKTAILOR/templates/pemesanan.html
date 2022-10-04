@@ -13,11 +13,13 @@
             <tr>
                 <th>ID Pelanggan</th>
                 <th>Tanggal Pemesanan</th>
+                <th>Tanggal Selesai</th>
             </tr>
             {% for item in pemesananall %}
             <tr>
                 <td>{{ item.IDpelanggan }}</td>
                 <td>{{ item.tanggalpemesanan }}</td>
+                <td>{{ item.tanggalselesai }}</td>
                 <td>
                     <a href="{% url 'updatedatapemesanan' item.IDpemesanan %}">
                         <button>Update</button>

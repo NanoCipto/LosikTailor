@@ -14,15 +14,24 @@
             <tr>
                 <th>Data Pemesanan</th>
                 <td>
-                    <label IDpelanggan>
-                        <input type="text" name="IDpelanggan">
-                    </label>
+                    <select name="IDpelanggan" id="" class="form-control">
+                        <option value=""></option>
+                        {% for item in pelangganall %}
+                        <option value="{{ item.IDpelanggan }}">{{ item }}</option>
+                        {% endfor %}
+                    </select>
                 </td>
             </tr>
             <tr>
                 <th>Tanggal Pemesanan</th>
                 <td>
                     <input type="date" name="tanggalpemesanan">
+                </td>
+            </tr>
+            <tr>
+                <th>Tanggal Selesai</th>
+                <td>
+                    <input type="date" name="tanggalselesai">
                 </td>
             </tr>
         </table>

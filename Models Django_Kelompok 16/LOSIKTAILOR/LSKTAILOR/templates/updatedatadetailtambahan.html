@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Data Detail Tambahan</title>
+</head>
+<body>
+    <h1>Update Data Detail Tambahan</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <th>ID Pemesanan</th>
+                <td>
+                    <select name="IDpemesanan" id="" class="form-control">
+                        <option value=""></option>
+                        {% for item in pemesananall %}
+                        <option value="{{ item.IDpemesanan }}">{{ item.IDpemesanan }}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>ID Tambahan</th>
+                <td>
+                    <select name="IDtambahan" id="" class="form-control">
+                        <option value=""></option>
+                        {% for item in tambahanall %}
+                        <option value="{{ item.IDtambahan }}">{{ item.IDtambahan }}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>Jumlah Item Tambahan</th>
+                <td>
+                    <input type="number" name="Jumlahitemtambahan">
+                </td>
+            </tr>
+        </table>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
