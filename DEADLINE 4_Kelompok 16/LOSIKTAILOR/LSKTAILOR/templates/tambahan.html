@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Tambahan</title>
+</head>
+<style>
+    a{
+        text-decoration: none;
+    }
+</style>
+<body>
+    <h1>Tambahan</h1>
+    <table>
+        <tbody>
+            <tr>
+                <th>ID Tambahan</th>
+                <th>Jenis Tambahan</th>
+                <th>Harga Tambahan</th>
+                <th>Action</th>
+            </tr>
+            {% for item in tambahanall %}
+            <tr>
+                <td>TMB00{{ item.IDtambahan }}</td>
+                <td>{{ item.jenistambahan }}</td>
+                <td>{{ item.hargatambahan }}</td>
+                <td>
+                    <a href="{% url 'updatedatatambahan' item.IDtambahan %}">
+                        <button>Update</button>
+                    </a>
+                    <a href="{% url 'deletedatatambahan' item.IDtambahan %}">
+                        <button>Delete</button>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{% url 'homepage' %}">
+        <button>
+            Back
+        </button>
+    </a>
+
+    <a href="{% url 'createdatatambahan' %}">
+        <button>
+            Create Data
+        </button>
+    </a>
+</body>
+</html>
