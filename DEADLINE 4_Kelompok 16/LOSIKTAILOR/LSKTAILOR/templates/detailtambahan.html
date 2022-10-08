@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Tambahan</title>
+</head>
+<body>
+    <h1>Data Detail Tambahan</h1>
+    <table>
+        <tbody>
+            <tr>
+                <th>ID Pemesanan</th>
+                <th>ID Tambahan</th>
+                <th>Jumlah Item Pesanan</th>
+            </tr>
+            {% for item in detailtambahanall %}
+            <tr>
+                <td>{{ item.IDpemesanan }}</td>
+                <td>{{ item.IDtambahan }}</td>
+                <td>{{ item.Jumlahitemtambahan }}</td>
+                <td>
+                    <a href="{% url 'updatedatadetailtambahan' item.IDdetailtambahan %}">
+                        <button>Update</button>
+                    </a>
+                    <a href="{% url 'deletedatadetailtambahan' item.IDdetailtambahan %}">
+                        <button>Delete</button>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    <a href="{% url 'homepage' %}">
+        <button>
+            Back
+        </button>
+    </a>
+
+    <a href="{% url 'createdatadetailtambahan' %}">
+        <button>
+            Create Data
+        </button>
+    </a>
+</body>
+</html>

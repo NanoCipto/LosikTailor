@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOSIK Tailor</title>
+</head>
+<body>
+    <h1>Welcome to LOSIK Tailor!</h1>
+    <tr>
+        <th>Pelanggan</th><br>
+        <td>
+        <a href="{% url 'pelanggan' %}">
+        <button>
+            Data Pelanggan
+        </button>
+        </a>
+        </td>
+    </tr>
+<br>
+<br>
+    <tr>
+        <th>Baju</th><br>
+        <td>
+            <a href="{% url 'baju' %}">
+                <button>
+                    Data Baju
+                </button>
+            </a>
+        </td>
+    </tr>
+<br>
+<br>
+    <tr>
+        <th>Tambahan</th><br>
+        <td>
+            <a href="{% url 'tambahan' %}">
+                <button>
+                    Data Tambahan
+                </button>
+            </a>
+        </td>
+    </tr>
+<br>
+<br>
+    <tr>
+        <th>Pemesanan</th><br>
+        <td>
+            <a href="{% url 'pemesanan' %}">
+                <button>
+                    Data Pemesanan
+                </button>
+            </a>
+        </td>
+    </tr>
+<br>
+<br>
+    <tr>
+        <th>Detail Pesanan</th><br>
+        <td>
+            <a href="{% url 'detailpesanan' %}">
+                <button>
+                    Data Detail Pesanan
+                </button>
+            </a>
+        </td>
+    </tr>
+<br>
+<br>
+    <tr>
+        <th>Detail Tambahan</th><br>
+        <td>
+            <a href="{% url 'detailtambahan' %}">
+                <button>
+                    Data Detail Tambahan
+                </button>
+            </a>
+        </td>
+    </tr>
+</body>
+</html>
